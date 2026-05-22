@@ -1,15 +1,17 @@
 produtos = [] #Lista de lista de produto
 
 def menu():
-    print("*-------MENU------*")
-    print("* 1 - Listar      *")
-    print("* 2 - Cadastrar   *")
-    print("* 3 - Alterar     *")
-    print("* 4 - Remover     *")
-    print("* 5 - Sair        *")
-    print("*-----------------*\n")
+    print("*-------MENU---------*")
+    print("* 1 - Listar         *")
+    print("* 2 - Cadastrar      *")
+    print("* 3 - Alterar        *")
+    print("* 4 - Remover        *")
+    print("* 5 - Sair           *")
+    print("* 6 - Modulo de Venda*")    
+    print("*--------------------*")
     opcao = int(input("Informe a sua opção: "))
     return opcao
+
 
 def listarProdutos():
     for id, nome, fabricante, valor, qtd  in produtos:        
@@ -50,7 +52,43 @@ def removerProduto():
         if produto[0] == id:                      
            produtos.remove(produto)
            return "Produto Removido com sucesso!\n"
-    return "Produto não encontrado!\n"            
+    return "Produto não encontrado!\n"
+
+def buscarProduto(id):
+    for produto in produtos:
+        if produto[0] == id:         
+           return produto
+    return None
+
+def moduloDeVenda():
+    lista_venda = []
+    print("Caixa de Venda\n")
+    while True:
+        id = int(input("Informe o ID do produto ou Zero(0) para finalizar: "))
+
+        if id == 0:
+            break
+        else:
+            prod = buscarProduto(id)
+            if prod != None:
+                lista_venda.append(prod)
+
+                print("Lista de Produto")
+                valor_venda = 0.0
+                for p in lista_venda:
+                    valor_venda += p[3]
+                    print("ID:",p[0],"-",p[1],"-",p[3])
+                print("-----------------------\n")
+            else:
+                print("Produto Não Encontrado!")
+    
+    
+
+    print("Valor Total", valor_venda)
+    print("\n\nFim da Venda")
+
+
+
 
 while True:
     opcao = menu()
@@ -70,6 +108,9 @@ while True:
         case 5: 
             print("Saindo do sistema")
             break
+        case 6: 
+            print("Modulo de venda")
+            moduloDeVenda()            
         case _: 
             print("Opção Inválida!!!")
 

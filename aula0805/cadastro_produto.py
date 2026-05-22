@@ -1,4 +1,4 @@
-produtos = []
+produtos = [] #Lista de lista de produto
 
 def menu():
     print("*-------MENU------*")
@@ -17,10 +17,40 @@ def listarProdutos():
         print("Nome:",nome)
         print("Fabricante:",fabricante)
         print("Valor:",valor)
-        print("IDQtd:",qtd)
+        print("Qtd:",qtd)
         print("-------------------------")
     else:
         print("\nNão tem produto cadastrado!\n")
+
+def cadastroDeNovoProduto():
+    produto = []
+    produto.append(int(input("Informe o ID do produto: ")))
+    produto.append(input("Informe o Nome do produto: "))
+    produto.append(input("Informe o Fabricante do produto: "))
+    produto.append(float(input("Informe o Valor do produto: ")))
+    produto.append(int(input("Informe a Quantidade do produto: ")))
+
+    produtos.append(produto)
+    print("Produto cadastrado com sucesso!!\n")
+
+def alterarProduto():
+    id = int(input("Informe o ID do produto a ser buscado: "))
+    for produto in produtos:
+        if produto[0] == id:                      
+            produto[1] = (input("Informe o Nome do produto: "))
+            produto[2] = (input("Informe o Fabricante do produto: "))
+            produto[3] = (float(input("Informe o Valor do produto: ")))
+            produto[4] = (int(input("Informe a Quantidade do produto: ")))
+            return "Produto Alterado com sucesso!\n"
+    return "Produto não encontrado!\n"
+
+def removerProduto():
+    id = int(input("Informe o ID do produto a ser removido: "))
+    for produto in produtos:
+        if produto[0] == id:                      
+           produtos.remove(produto)
+           return "Produto Removido com sucesso!\n"
+    return "Produto não encontrado!\n"            
 
 while True:
     opcao = menu()
@@ -30,10 +60,13 @@ while True:
             listarProdutos()
         case 2:
             print("Cadatrar novo Produto")
+            cadastroDeNovoProduto()
         case 3: 
             print("Alterar Produto")
+            print(alterarProduto())
         case 4: 
             print("Remover Produto")
+            print(removerProduto())
         case 5: 
             print("Saindo do sistema")
             break

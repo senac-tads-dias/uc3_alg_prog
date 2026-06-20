@@ -81,10 +81,15 @@ def moduloDeVenda():
                 print("-----------------------\n")
             else:
                 print("Produto Não Encontrado!")
-    
+    valor_venda = 0.0
+    for p in lista_venda:
+        valor_venda += p[3]
+        print("ID:",p[0],"-",p[1],"-",p[3])
+    print("Valor Total", valor_venda)
+    print("-----------------------\n")  
     
 
-    print("Valor Total", valor_venda)
+    
     print("\n\nFim da Venda")
 
 

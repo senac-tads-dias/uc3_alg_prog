@@ -1,0 +1,3 @@
+{'nome': 'Fulano', 'idade': 18}
+{'nome': 'Ciclano', 'idade': 28}
+{'nome': 'Beltrano', 'idade': 45}
